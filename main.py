@@ -29,15 +29,22 @@ def main():
     print("Input the file's format (for example cpp):", end=' ')
     format = str(input())
 
-    # Changing directory to the given one
-    os.system(f"cd {directory}")
+    # === snippets ===
+    print("Do you want to create \"Hello, world!\" snippet? (Y/N):", end=' ')
+    snippet = str(input()).lower()
 
     # Creating files
     for i in range(1, quantity + 1):
         file = open(f"{directory}/{name}{i}.{format}", "a")
 
-        if(format == "cpp"):
+        if((format == "cpp") and (snippet == 'y')):
             file.write("#include \"iostream\"\n\nint main(){\n\n\treturn 0;\n}")
+        elif((format == "py") and (snippet == 'y')):
+            file.write("def main():\n\treturn\n\nif __name__ == \'__main__\':\n\tmain()")
+        elif((format == "java") and (snippet == 'y')):
+            file.write("class Main{\n    public static void main(String[] args){\n        System.out.println(\"Hello World!\");\n    }\n}")
+        elif((format == "cs") and (snippet == 'y')):
+            file.write("namespace Main\n{\n    class Main{         \n        static void Main(string[] args)\n        {\n            System.Console.WriteLine(\"Hello World!\");\n        }\n    }\n}")
 
         file.close()
 
