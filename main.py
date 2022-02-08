@@ -43,17 +43,18 @@ def main():
         elif (fileFormat == "py") and (snippetEnabled == 'y'):
             file.write("def main():\n\treturn\n\nif __name__ == \'__main__\':\n\tmain()")
         elif (fileFormat == "java") and (snippetEnabled == 'y'):
-            file.write("class Main{\n    public static void main(String[] args){\n        System.out.println(\"Hello "
-                       "World!\");\n    }\n}")
+            file.write("class %name%count{\n    public static void main(String[] args){\n        System.out.println("
+                       "\"Hello "
+                       "World!\");\n    }\n}" % fileName % i)
         elif (fileFormat == "cs") and (snippetEnabled == 'y'):
-            file.write("namespace Main\n{\n    class Main{         \n        static void Main(string[] args)\n        "
-                       "{\n            System.Console.WriteLine(\"Hello World!\");\n        }\n    }\n}")
+            file.write("namespace Main\n{\n    class %name%count{         \n        static void Main(string[] args)\n "
+                       "{\n            System.Console.WriteLine(\"Hello World!\");\n        }\n    }\n}" % fileName % i)
         elif (fileFormat == "pde") and (snippetEnabled == 'y'):
             file.write("void setup() {\n  size(640, 360);\n  stroke(255);\n}\n\nvoid draw(){\n  background(0);\n  \n  "
                        "fill(80);\n  noStroke();\n}")
         elif (fileFormat == "c") and (snippetEnabled == 'y'):
             file.write("#include <stdio.h>\n\nint main() {\n   printf(\"Hello, World!\");\n\n   return 0;\n}")
-            
+
         file.close()
 
     print("Done!\n")
@@ -61,5 +62,6 @@ def main():
     return
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
+
